@@ -321,9 +321,9 @@ async function sendMessage() {
       if (msg.includes('API key')) {
         appendMessage('assistant', 'Your API key looks invalid. Please check it in the bar above and try again.');
       } else if (msg.includes('quota') || msg.includes('429')) {
-        appendMessage('assistant', 'Rate limit hit — please wait a minute and try again. Gemini\'s free tier allows 15 requests per minute.');
+        appendMessage('assistant', 'Quota error: ' + msg);
       } else {
-        appendMessage('assistant', `Error from Gemini: ${msg}`);
+        appendMessage('assistant', 'Full error: ' + JSON.stringify(data.error));
       }
       return;
     }
